@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -38,4 +38,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;
