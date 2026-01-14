@@ -1,0 +1,32 @@
+{
+  "name": "shopathon",
+  "version": "1.0.0",
+  "description": "eCommerce MERN app",
+  "homepage": "https://github.com/ashwinrgpl/shopathon#readme",
+  "bugs": {
+    "url": "https://github.com/ashwinrgpl/shopathon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwinrgpl/shopathon.git"
+  },
+  "license": "MIT",
+  "author": "Ashwin Suryawanshi",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.11"
+  }
+}
