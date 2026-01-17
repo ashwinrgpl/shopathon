@@ -1,4 +1,4 @@
-import { PRODUCTS_URL } from '../constants';
+import { PRODUCTS_URL } from '../../constants';
 import apiSlice from './apiSlice';
 
 const productsApiSlice = apiSlice.injectEndpoints({
@@ -13,3 +13,4 @@ const productsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useGetProductsQuery, useGetProductDetailsQuery } = productsApiSlice;
+

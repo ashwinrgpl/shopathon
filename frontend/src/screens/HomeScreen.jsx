@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
-import { useGetProductsQuery } from '../slices/productsApiSlice';
+import { useGetProductsQuery } from '../redux/slices/productsApiSlice';
 import Message from '../components/Message';
 
 const HomeScreen = () => {
