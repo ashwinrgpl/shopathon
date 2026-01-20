@@ -9,6 +9,9 @@ import { notFound, errorHandler } from './middleware/errorMissleware.js';
 const PORT = process.env.PORT || 5005;
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 connectDB();
 app.get('/', (req, res) => {
     res.send('Server is running...');
