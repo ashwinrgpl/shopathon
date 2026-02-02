@@ -8,6 +8,7 @@ import {
   useGetOrderByIdQuery,
   usePayOrderMutation,
   useGetPaypalClientIdQuery,
+  useDeliverOrderMutation,
 } from "../redux/slices/ordersApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -22,6 +23,8 @@ const OrderScreen = () => {
   } = useGetOrderByIdQuery(orderId);
 
   const [payOrder, { isLoading: isPaying }] = usePayOrderMutation();
+
+  const [deliverOrder, { isLoading: isDelivering }] = useDeliverOrderMutation();
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -92,6 +95,16 @@ const OrderScreen = () => {
       .then((orderId) => {
         return orderId;
       });
+  };
+
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      toast.success("Order delivered");
+      refetch();
+    } catch (err) {
+      toast.error(err.data.message || err.error);
+    }
   };
 
   return isLoading ? (
@@ -204,7 +217,18 @@ const OrderScreen = () => {
                   )}
                 </ListGroup.Item>
               )}
-              {/* MARK ORDER AS DELIVERED PLACEHOLDER */}
+              { isDelivering && <Loader /> }
+              { userInfo && userInfo.isAdmin && !order.isDelivered && (
+                <ListGroup.Item>
+                  <Button
+                    type="button"
+                    className="btn btn-block"
+                    onClick={deliverOrderHandler}
+                  >
+                    Mark As Delivered
+                  </Button>
+                </ListGroup.Item>
+              )}
             </ListGroup>
           </Card>
         </Col>
