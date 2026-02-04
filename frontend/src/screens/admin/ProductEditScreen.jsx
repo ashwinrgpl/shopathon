@@ -7,6 +7,7 @@ import FormContainer from "../../components/FormContainer";
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
+  useUploadProductImageMutation,
 } from "../../redux/slices/productsApiSlice";
 import { toast } from "react-toastify";
 
@@ -20,9 +21,10 @@ const ProductEditScreen = () => {
   const [description, setDescription] = useState("");
   const [countInStock, setCountInStock] = useState(0);
 
-  const { data: product, error } = useGetProductDetailsQuery(productId);
+  const { data: product, error
+   } = useGetProductDetailsQuery(productId);
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
-
+  const [uploadProductImage, { isLoading: isUploading }] = useUploadProductImageMutation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,6 +54,19 @@ const ProductEditScreen = () => {
       });
       toast.success("Product updated");
       navigate("/admin/productlist");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      setImage(res.image);
+      toast.success(res.message);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -88,7 +103,16 @@ const ProductEditScreen = () => {
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            {/* IMAGE INPUT PLACEHOLDER */}
+            <Form.Group controlId="image" className="my-2">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter image URL"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></Form.Control>
+              <Form.Control type="file" label="Choose File" onChange={uploadFileHandler}></Form.Control>
+            </Form.Group>
             <Form.Group controlId="brand" className="my-2">
               <Form.Label>Brand</Form.Label>
               <Form.Control
