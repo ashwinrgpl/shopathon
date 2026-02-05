@@ -4,16 +4,25 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import { useGetProductsQuery, useCreateProductMutation } from "../../redux/slices/productsApiSlice";
+import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation } from "../../redux/slices/productsApiSlice";
 import { toast } from "react-toastify";
 
 const ProductListScreen = () => {
-  const { data: products, error, refetch } = useGetProductsQuery();
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
   const [createProduct, { isLoading: isCreating }] = useCreateProductMutation();
-  
-  const deleteHandler = (id) => {
-    console.log(id);
-  };
+  const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
+
+  const deleteHandler = async (id) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      try {
+        await deleteProduct(id);
+        refetch();
+        toast.success("Product deleted");
+      } catch (err) {
+        toast.error(err.data.message || err.error);
+      }
+    }
+  }
 
   const createProductHandler = async () => {
    if (window.confirm("Are you sure you want to create a new product?")) {
@@ -39,7 +48,7 @@ const ProductListScreen = () => {
           </Button>
         </Col>
       </Row>
-      {isCreating ? (
+      { isLoading || isCreating || isDeleting ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
