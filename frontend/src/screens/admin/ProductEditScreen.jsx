@@ -152,7 +152,7 @@ const ProductEditScreen = () => {
             <Button type="submit" variant="primary">
               Update
             </Button>
-            {isUpdating && <Loader />}
+            {isUpdating || isUploading ? <Loader /> : null}
           </Form>
         )}
       </FormContainer>
