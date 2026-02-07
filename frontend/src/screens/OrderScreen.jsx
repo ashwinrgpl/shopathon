@@ -69,7 +69,7 @@ const OrderScreen = () => {
         toast.success("Payment successful");
         refetch();
       } catch (err) {
-        toast.error(err.data.message || err.error);
+        toast.error(err?.data?.message || err.error);
       }
     });
   };
@@ -103,7 +103,7 @@ const OrderScreen = () => {
       toast.success("Order delivered");
       refetch();
     } catch (err) {
-      toast.error(err.data.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
   };
 

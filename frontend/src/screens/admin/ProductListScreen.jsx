@@ -19,7 +19,7 @@ const ProductListScreen = () => {
         refetch();
         toast.success("Product deleted");
       } catch (err) {
-        toast.error(err.data.message || err.error);
+        toast.error(err?.data?.message || err.error);
       }
     }
   }
@@ -31,7 +31,7 @@ const ProductListScreen = () => {
       refetch();
       toast.success("Product created");
     } catch (err) {
-      toast.error(err.data.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
    };
   };
