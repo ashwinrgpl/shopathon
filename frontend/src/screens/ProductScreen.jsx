@@ -12,6 +12,7 @@ import {
 import Ratings from "../components/Ratings";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Meta from "../components/Meta";
 import {
   useGetProductDetailsQuery,
   useCreateProductReviewMutation,
@@ -71,6 +72,7 @@ const ProductScreen = () => {
           </Message>
         ) : (
           <>
+            <Meta title={product.name} description={product.description} keywords={product.keywords} />
             <Row>
               <Col md={5}>
                 <Image src={product.image} alt={product.name} fluid />
