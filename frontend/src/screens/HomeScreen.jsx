@@ -5,6 +5,7 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
+import ProductCarousel from "../components/ProductCarousel";
 import { useGetProductsQuery } from "../redux/slices/productsApiSlice";
 
 const HomeScreen = () => {
@@ -15,11 +16,11 @@ const HomeScreen = () => {
   });
   return (
     <>
-      {keyword && (
-        <Link to="/" className="btn btn-light my-3">
-          Go Back
-        </Link>
-      )}
+      {!keyword ? <ProductCarousel /> : (
+          <Link to="/" className="btn btn-light my-3">
+            Go Back
+          </Link>
+        )}
       {isLoading ? (
         <Loader />
       ) : error ? (
