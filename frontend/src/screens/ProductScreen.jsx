@@ -59,20 +59,19 @@ const ProductScreen = () => {
   };
 
   return (
-    product && (
-      <>
-        <Link className="btn btn-light my-3" to="/">
-          Back to Products
-        </Link>
-        {isLoading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">
-            {error.data.message || error.error}
-          </Message>
-        ) : (
-          <>
-            <Meta title={product.name} description={product.description} keywords={product.keywords} />
+    <>
+      <Link className="btn btn-light my-3" to="/">
+        Back to Products
+      </Link>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">
+          {error?.data?.message || error?.error || "Product not found"}
+        </Message>
+      ) : product ? (
+        <>
+          <Meta title={product.name} description={product.description} keywords={product.keywords} />
             <Row>
               <Col md={5}>
                 <Image src={product.image} alt={product.name} fluid />
@@ -222,10 +221,9 @@ const ProductScreen = () => {
               </Col>
             </Row>
           </>
-        )}
+        ) : null}
       </>
-    )
-  );
+    );
 };
 
 export default ProductScreen;

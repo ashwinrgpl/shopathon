@@ -8,7 +8,7 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import connectDB from './config/db.js';
-import { notFound, errorHandler } from './middleware/errorMissleware.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 const PORT = process.env.PORT || 5005;
 const app = express();
 

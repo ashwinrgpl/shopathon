@@ -9,6 +9,7 @@ import SearchBox from "./SearchBox";
 import logo from "../assets/logo.png";
 import { logoutUser } from "../redux/slices/authSlice";
 import { toast } from "react-toastify";
+import { resetCart } from "../redux/slices/cartSlice";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -21,6 +22,7 @@ const Header = () => {
     try {
       await logout().unwrap();
       dispatch(logoutUser());
+      dispatch(resetCart());
       navigate("/login");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
