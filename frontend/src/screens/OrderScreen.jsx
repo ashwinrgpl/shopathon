@@ -65,7 +65,7 @@ const OrderScreen = () => {
     return actions.order.capture().then(async (details) => {
       try {
         console.log(orderId);
-        await payOrder({ orderId, details });
+        await payOrder({ orderId, details }).unwrap();
         toast.success("Payment successful");
         refetch();
       } catch (err) {
