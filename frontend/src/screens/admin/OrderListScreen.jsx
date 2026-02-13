@@ -10,6 +10,7 @@ const OrderListScreen = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
   return (
     <>
+    <h1>Products</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (

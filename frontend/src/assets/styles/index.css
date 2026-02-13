@@ -1,10 +1,27 @@
 main {
   min-height: 80vh;
+  padding-bottom: 2rem;
 }
 
 .shopathon-logo {
   margin: -8px -50px;
   border-radius: 6px;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-toggle:hover {
+  color: #fff !important;
 }
 
 .rating span {
@@ -28,6 +45,15 @@ main {
   white-space: nowrap; /* Prevent wrapping */
 }
 
+.product-card .card {
+  height: 100%;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+}
+
 table td,
 table th {
   text-align: center;
@@ -46,6 +72,14 @@ table th {
 
 .review button {
   margin-top: 10px;
+}
+
+.carousel-image {
+  height: 300px;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+  object-fit: contain;
 }
 
 .carousel-caption {

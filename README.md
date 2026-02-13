@@ -187,7 +187,7 @@ PORT=5005
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 PAYPAL_CLIENT_ID=your_paypal_client_id
-PAYPAL_APP_SECRET=your_paypal_app_secret
+PAYPAL_CLIENT_SECRET=your_paypal_app_secret
 PAYPAL_API_URL=https://api-m.sandbox.paypal.com
 ```
 
