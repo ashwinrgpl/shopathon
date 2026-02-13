@@ -27,7 +27,7 @@ const UserListScreen = () => {
   };
   return (
     <>
-      <h1>Users</h1>
+      <h1 className="my-3">Users</h1>
       {isLoading || isDeleting ? (
         <Loader />
       ) : error ? (

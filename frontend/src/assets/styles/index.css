@@ -77,9 +77,16 @@ table th {
 .carousel-image {
   height: 300px;
   padding: 30px;
-  margin: 40px;
+  margin: 0px auto 90px;
   border-radius: 50%;
   object-fit: contain;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  top: 0;
+  bottom: auto;
+  height: 70%;
 }
 
 .carousel-caption {

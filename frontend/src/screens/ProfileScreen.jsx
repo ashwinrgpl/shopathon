@@ -54,7 +54,7 @@ const ProfileScreen = () => {
   return (
     <Row>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2 className="my-3">User Profile</h2>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name" className="my-2">
             <Form.Label>Name</Form.Label>
@@ -99,7 +99,7 @@ const ProfileScreen = () => {
         </Form>
       </Col>
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2 className="my-3">My Orders</h2>
         {isLoadingOrders ? <Loader /> : error ? <Message variant='danger'>{error.data.message || error.error}</Message> : (
           <Table striped hover responsive className="table-sm">
             <thead>

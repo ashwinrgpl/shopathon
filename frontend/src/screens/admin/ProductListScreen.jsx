@@ -49,7 +49,7 @@ const ProductListScreen = () => {
     <>
       <Row>
         <Col>
-          <h1>Products</h1>
+          <h1 className="my-3">Products</h1>
         </Col>
         <Col className="text-end">
           <Button className="btn-sm m-3" onClick={createProductHandler}>

@@ -26,7 +26,7 @@ const CartScreen = () => {
     };
 
     return (
-        <Row>
+        <Row className="mt-3">
             <Col md={8}>
             <h1 style={{ marginBottom: '20px' }}>Shopping Cart</h1>
             {cartItems.length === 0 ? (
@@ -46,7 +46,7 @@ const CartScreen = () => {
                                 </Col>
                                 <Col md={2}>${item.price}</Col>
                                 <Col md={2}>
-                                    <Form.Control as="select" value={item.qty} onChange={(e) => addToCartHandler(item._id, Number(e.target.value))}>
+                                    <Form.Control as="select" value={item.qty} onChange={(e) => addToCartHandler(item, Number(e.target.value))}>
                                         {[...Array(item.countInStock).keys()].map((x) => (
                                             <option key={x + 1} value={x + 1}>{x + 1}</option>
                                         ))}
