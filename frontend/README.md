@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Frontend - Shopathon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This directory contains the React client application for Shopathon.
 
-## Available Scripts
+## Scope
 
-In the project directory, you can run:
+- Product browsing, search, pagination, and product details
+- Cart and checkout flow
+- User authentication and profile pages
+- Admin UI for products, users, and orders
+- PayPal checkout button integration
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 19
+- React Router
+- Redux Toolkit + RTK Query
+- React-Bootstrap + Bootstrap
+- React-Toastify
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Local Development
 
-### `npm test`
+From the repository root:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm run client
+```
 
-### `npm run build`
+Or from this `frontend` directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Client runs on `http://localhost:3000` and proxies API requests to backend (`http://localhost:5005`) using `package.json` proxy config.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Scripts
 
-### `npm run eject`
+Run in `frontend`:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `npm start` - Start development server
+- `npm test` - Run tests in watch mode
+- `npm run build` - Create production build
+- `npm run eject` - Eject CRA config (irreversible)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Key Directories
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```text
+frontend/src/
+  components/      # Reusable UI components
+  screens/         # Route-level pages
+  redux/           # Store, slices, RTK Query API slices
+  assets/styles/   # Global styles
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Conventions
 
-## Learn More
+- Keep route-level data fetching in `screens/`
+- Keep API definitions in RTK Query slices under `redux/slices/`
+- Use toast notifications for user-facing async feedback
+- Keep components focused and reusable
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Common Issues
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Proxy errors** (`ECONNREFUSED`): backend server is down
+- **Stale list data after mutation**: verify RTK Query `providesTags` and `invalidatesTags`
+- **PayPal button issues**: verify backend `/api/config/paypal` and PayPal sandbox env vars
 
-### Code Splitting
+## Additional Documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Main project docs: `../README.md`
+- Backend docs: `../backend/README.md`

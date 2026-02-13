@@ -22,7 +22,7 @@ const OrderScreen = () => {
     error,
   } = useGetOrderByIdQuery(orderId);
 
-  const [payOrder, { isLoading: isPaying }] = usePayOrderMutation();
+  const [payOrder] = usePayOrderMutation();
 
   const [deliverOrder, { isLoading: isDelivering }] = useDeliverOrderMutation();
 
@@ -72,15 +72,6 @@ const OrderScreen = () => {
         toast.error(err?.data?.message || err.error);
       }
     });
-  };
-
-  const onApproveTest = async () => {
-    await payOrder({
-      orderId,
-      details: { payer: { email_address: userInfo.email } },
-    });
-    toast.success("Payment successful");
-    refetch();
   };
 
   const onError = (error) => {
